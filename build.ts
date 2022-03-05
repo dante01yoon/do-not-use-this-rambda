@@ -1,12 +1,22 @@
 const { build } = require("esbuild");
 const { dependencies, peerDependencies } = require("./package.json");
 
-build({
+const shared = {
   entryPoints: ["src/index.ts"],
-  outdir: "dist",
   bundle: true,
   external: Object.keys({
     ...dependencies,
     ...peerDependencies,
   }),
+};
+
+build({
+  ...shared,
+  outfile: "dist/index.js",
+});
+
+build({
+  ...shared,
+  outfile: "dist/index.esm.js",
+  format: "esm",
 });
