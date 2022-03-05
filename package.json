@@ -1,9 +1,14 @@
 {
+  "name": "do-not-use-this",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "dependencies": {
     "esbuild": "^0.14.25"
   },
   "scripts": {
-    "build": "node build.ts"
+    "build": "node build.ts",
+    "deploy": ""
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
