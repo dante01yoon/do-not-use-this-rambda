@@ -3,7 +3,7 @@
     "esbuild": "^0.14.25"
   },
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.ts"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
