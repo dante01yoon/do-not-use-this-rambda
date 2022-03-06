@@ -1,8 +1,10 @@
-import { each } from "./fp";
-export * from "./fp"
+import { each, reject, isArray } from "./fp";
+export * from "./fp";
 
 const underscore = {
   each,
-}
+  reject,
+  isArray,
+};
 
 export default underscore;
