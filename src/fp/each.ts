@@ -1,26 +1,16 @@
-export const each = (
-  arrayLike: any,
-  fn: (val, idx: number, list: any) => void
-) => {
-  if (typeof fn !== "function") {
-    throw Error("typeof fn is not a function");
-  }
+import { isArrayLike } from "./map";
 
-  let index = 0;
-
-  try {
-    if (arrayLike.constructor === Object) {
-      for (let [key] of Object.entries(arrayLike)) {
-        fn(key, index++, arrayLike);
-      }
-    } else {
-      for (let value of arrayLike) {
-        fn(value, index++, arrayLike);
-      }
+const each = (data, iteratee) => {
+  if (isArrayLike(data)) {
+    for (var i = 0, len = data.length; i < len; i++) {
+      iteratee(data[i], i, data);
     }
-    return arrayLike;
-  } catch (e) {
-    // Uncaught TypeError: f is not iterable
-    throw Error(e);
+  } else {
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) iteratee(data[key], key, data);
+    }
   }
+  return data;
 };
+
+export default each;
